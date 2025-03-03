@@ -1,0 +1,9 @@
+Stable Diffusion:
+https://huggingface.co/stabilityai/stable-video-diffusion-img2vid
+
+CogVideoX-5B-I2V:
+https://github.com/THUDM/CogVideo
+https://huggingface.co/THUDM/CogVideoX-5b
+
+Open-Sora:
+https://github.com/hpcaitech/Open-Sora

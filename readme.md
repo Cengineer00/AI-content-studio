@@ -1,0 +1,36 @@
+# Content Creation Tools
+
+A collection of open-source tools for creative content generation, including **text-to-image, text-to-video, image-to-video, and image upscaling, stable scrolling**.
+
+## 🚀 Features
+- **Text-to-Image (txt2img)**: Generate images from text using state-of-the-art models.
+- **Text-to-Video (txt2vid)**: Convert text prompts into videos.
+- **Image-to-Video (img2vid)**: Create animations from static images.
+- **Image Upscaler**: Enhance low-resolution images with AI-powered upscaling.
+- **Stable Scroll**: Smooth scrolling with keyboard controls.
+
+---
+
+## ✅ TODO List
+
+### **🖱️ Stable Scroll**
+- [x] Implement basic smooth scrolling
+- [ ] Add GUI for adjusting speed
+
+### **🖼️ Text-to-Image (txt2img)**
+- [ ] Implement model selection -> **FluxAI**
+
+### **🎬 Text-to-Video (txt2vid)**
+- [ ] Implement model selection -> **CogVideoX, Open-Sora**
+
+### **📽️ Image-to-Video (img2vid)**
+- [ ] Implement model selection -> **Stable Diffusion, CogVideoX-5B-I2V, Open-Sora**
+
+### **🔍 Image Upscaler**
+- [ ] Explore options (Upscayl tool seems like a safe choice but it seems impossible to integrate it here.)
+
+---
+
+
+## 📜 License
+This project is licensed under the MIT License. Feel free to contribute!

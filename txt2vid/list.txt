@@ -1,0 +1,6 @@
+CogVideoX:
+https://github.com/THUDM/CogVideo
+https://huggingface.co/THUDM/CogVideoX-5b
+
+Open-Sora:
+https://github.com/hpcaitech/Open-Sora
