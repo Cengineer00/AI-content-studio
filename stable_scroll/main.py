@@ -42,7 +42,7 @@ def smooth_scroll():
 
     print("Smooth scrolling started. Controls:")
     print("- ESC to stop")
-    print("- Space to pause/resume")
+    print("- Press 'S' to pause/resume")
     print("- Up Arrow to increase speed (scroll up)")
     print("- Down Arrow to decrease speed (scroll down)")
     print(f"Initial speed: {scroll_speed}")
