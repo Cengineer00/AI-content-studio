@@ -29,6 +29,9 @@ A collection of open-source tools for creative content generation, including **t
 ### **🔍 Image Upscaler**
 - [ ] Explore options (Upscayl tool seems like a safe choice but it seems impossible to integrate it here.)
 
+### **🎨 User Interface (UI)**
+- [ ] Implement a UI for users to interact with tools.
+
 ---
 
 
