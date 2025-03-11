@@ -32,6 +32,13 @@ A collection of open-source tools for creative content generation, including **t
 
 ### **🎨 User Interface (UI)**
 - [ ] Implement a UI for users to interact with tools.
+      
+### **🖼️✂️ Background Remover**
+- [ ] Explore options -> **RMBG-2.0, nadermx/BackgroundRemover**
+      
+### **⌨️✨ TypeFlow**
+TypeFlow is a tool that allows you to pre-write text and display it dynamically in your videos at a controlled speed—just like natural typing, but without mistakes. Perfect for when you want text to appear smoothly on screen without the hassle of retyping.
+- [ ] Implement
 
 ---
 
