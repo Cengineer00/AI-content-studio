@@ -16,7 +16,7 @@ A collection of open-source tools for creative content generation, including **t
 ### **🖱️ Stable Scroll**
 - [x] Implement basic smooth scrolling
 - [ ] Add GUI for adjusting speed
-- [ ] Convert to a BaseModel structure and create a task of it
+- [x] Convert to a BaseModel structure and create a task of it
 
 ### **🖼️ Text-to-Image (txt2img)**
 - [ ] Implement model selection -> **FluxAI**
