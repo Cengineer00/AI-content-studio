@@ -43,7 +43,7 @@ class ContentCreationCLI:
             print("\n│ Parameter Input │")
             print("├─────────────────┤")
             print("│ Format: key=value, comma separated")
-            print("│ Commands: [h]help [q]quit [d]defaults")
+            print("│ Commands: [h]help [q]quit [enter]defaults")
             param_input = input("╞> ").strip().lower()
 
             if param_input == 'h':
@@ -51,7 +51,7 @@ class ContentCreationCLI:
                 continue
             if param_input == 'q':
                 return None
-            if param_input == 'd':
+            if param_input == '':
                 return handler.validate_parameters({})
 
             for pair in param_input.split(','):
@@ -138,7 +138,7 @@ class ContentCreationCLI:
         try:
             while True:
                 task_choice = self.show_menu(
-                    "Content Creation Suite",
+                    "AI Content Studio",
                     {k: v['name'] for k, v in self.task_registry.items()}
                 )
 
@@ -155,7 +155,7 @@ class ContentCreationCLI:
         except KeyboardInterrupt:
             print("\nExiting...")
         finally:
-            print("\nThank you for using the Content Creation Suite!")
+            print("\nThank you for using the AI Content Studio!")
 
 if __name__ == "__main__":
     cli = ContentCreationCLI()
