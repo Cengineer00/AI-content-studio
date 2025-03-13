@@ -60,6 +60,11 @@ class BaseModel(ABC):
         return validated
 
     @abstractmethod
-    def generate(self, prompt: str, params: Dict[str, Any]) -> str:
+    def generate(self, params: Dict[str, Any]) -> str:
+        """Abstract method to be implemented by subclasses"""
+        pass
+
+    @abstractmethod
+    def get_input(self):
         """Abstract method to be implemented by subclasses"""
         pass

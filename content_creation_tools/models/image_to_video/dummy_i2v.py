@@ -1,5 +1,6 @@
 from content_creation_tools.core import BaseModel
 from typing import Dict, Any
+import os
 
 class DummyImageToVideoModel(BaseModel):
     def __init__(self):
@@ -30,9 +31,15 @@ class DummyImageToVideoModel(BaseModel):
         
         self.required_params = ['steps']
 
-    def generate(self, prompt: str, params: Dict[str, Any]) -> str:
-        validated_params = self.validate_parameters(params)
-        
-        print(f"Generating dummy video with prompt: {prompt} and params: {validated_params}")
+    def get_input(self) -> str:
+        while True:
+            input_path = input("Enter input file path: ")
+            if os.path.exists(input_path):
+                return input_path
+            else:
+                print("File path does not exist. Please try again.")
+
+    def generate(self, params: Dict[str, Any], image_path: str) -> str:
+        print(f"Generating dummy video from the image: {image_path} and params: {params}")
         
         return "dummy video"

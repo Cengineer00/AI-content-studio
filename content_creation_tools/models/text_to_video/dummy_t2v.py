@@ -30,9 +30,11 @@ class DummyTextToVideoModel(BaseModel):
         
         self.required_params = ['steps']
 
-    def generate(self, prompt: str, params: Dict[str, Any]) -> str:
-        validated_params = self.validate_parameters(params)
-        
-        print(f"Generating dummy video with prompt: {prompt} and params: {validated_params}")
+    def get_input(self) -> str:
+        prompt_input = input("Enter a creative prompt: ")
+        return prompt_input
+
+    def generate(self, params: Dict[str, Any], prompt: str) -> str:
+        print(f"Generating dummy video with prompt: {prompt} and params: {params}")
         
         return "dummy video"
