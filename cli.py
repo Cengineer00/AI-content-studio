@@ -5,6 +5,7 @@ from content_creation_tools.tasks import (
     TextToImageTask,
     TextToVideoTask,
     ImageToVideoTask,
+    TypeFlowTask
     # ImageUpscalingTask,
     # StableScrollTool,
     # StyleTransferTool
@@ -12,13 +13,15 @@ from content_creation_tools.tasks import (
 
 class ContentCreationCLI:
     def __init__(self):
+        # TODO: Define name in task classes
         self.task_registry = {
-            '1': {'name': 'Text-to-Image', 'handler': TextToImageTask(), 'needs_model': True},
-            '2': {'name': 'Text-to-Video', 'handler': TextToVideoTask(), 'needs_model': True},
-            '3': {'name': 'Image-to-Video', 'handler': ImageToVideoTask(), 'needs_model': True},
-            # '4': {'name': 'Image-Upscaling', 'handler': ImageUpscalingTask(), 'needs_model': True},
-            # '5': {'name': 'Stable-Scrolling', 'handler': StableScrollTool(), 'needs_model': False},
-            # '6': {'name': 'Style-Transfer', 'handler': StyleTransferTool(), 'needs_model': False}
+            '1': {'name': 'Text-to-Image', 'handler': TextToImageTask()},
+            '2': {'name': 'Text-to-Video', 'handler': TextToVideoTask()},
+            '3': {'name': 'Image-to-Video', 'handler': ImageToVideoTask()},
+            '4': {'name': 'TypeFlow', 'handler': TypeFlowTask()},
+            # '4': {'name': 'Image-Upscaling', 'handler': ImageUpscalingTask()},
+            # '5': {'name': 'Stable-Scrolling', 'handler': StableScrollTool()},
+            # '6': {'name': 'Style-Transfer', 'handler': StyleTransferTool()}
         }
 
     def clear_screen(self):
@@ -76,8 +79,9 @@ class ContentCreationCLI:
 
         while True:
             try:
-                # Model selection for tasks requiring models
-                if task['needs_model']:
+                # Check if list_models method exists
+                if callable(getattr(handler, "list_models", None)):
+                    # Model selection for tasks requiring models
                     models = handler.list_models()
                     model_choice = self.show_menu(
                         f"Choose Model for {task['name']}",
@@ -91,25 +95,23 @@ class ContentCreationCLI:
                     if not current_model:
                         print("! Invalid model selection")
                         continue
+                else:
+                    current_model = handler.get_model()
 
                 # Parameter handling
-                params = self.get_parameters(current_model if task['needs_model'] else handler)
+                params = self.get_parameters(current_model)
                 if not params:
                     return
 
                 # Input collection
-                input_data = {}
-                if task['name'] in ['Text-to-Image', 'Text-to-Video']:
-                    input_data['prompt'] = input("\nEnter creative prompt: ")
-                elif task['name'] in ['Image-Upscaling', 'Style-Transfer', 'Stable-Scrolling']:
-                    input_data['input_path'] = input("Enter input file path: ")
+                input_data = current_model.get_input()
 
                 # Execution
                 print("\n╭─ Generating...")
                 result = handler.execute(
-                    model=current_model,
-                    params=params,
-                    **input_data
+                    model=current_model, 
+                    params=params, 
+                    input_data=input_data
                 )
                 print("╰─ Done!")
                 
