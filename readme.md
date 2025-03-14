@@ -41,6 +41,12 @@ TypeFlow is a tool that allows you to pre-write text and display it dynamically 
 - [x] Implement
 - [x] Convert to a BaseModel structure and create a task of it
 
+### **⌨️✨ ShortsFusion**
+Automate the creation of YouTube Shorts by merging and trimming two videos into a horizontal split-screen format with combined audio.
+- [x] Implement the first, simple version.
+- [ ] Convert to a BaseModel structure and create a task of it.
+- [ ] Add different options for the user.
+
 ---
 
 
