@@ -47,7 +47,8 @@ def speed_up_with_pitch_correction(clip, speed_factor):
         return VideoFileClip(output_path)
 
 def merge_videos(video1_path, video2_path, t1_start, t1_end, t2_start, t2_end, 
-                 output_path, line_color=(255,255,255), line_width=5, target_resolution=(1920, 1080)):
+                 output_path, line_color=(255,255,255), line_width=5, speed_factor=1.0,
+                 target_resolution=(1920, 1080)):
 
     target_width_per_clip = target_resolution[1]
     target_height_per_clip = target_resolution[0] // 2
@@ -73,15 +74,14 @@ def merge_videos(video1_path, video2_path, t1_start, t1_end, t2_start, t2_end,
         )
 
     # Resize and crop to focus on the center (simulate "zoom")
-    speed_factor = 1.01
     clip1_resized = process_clip(clip1)
     clip2_resized = process_clip(clip2)
 
-    clip1_resized = speed_up_with_pitch_correction(clip1_resized, speed_factor)
-    clip2_resized = speed_up_with_pitch_correction(clip2_resized, speed_factor)
+    clip1_resized_sped = speed_up_with_pitch_correction(clip1_resized, speed_factor)
+    clip2_resized_sped = speed_up_with_pitch_correction(clip2_resized, speed_factor)
 
     # Combine clips vertically
-    merged_clip = clips_array([[clip1_resized], [clip2_resized]])
+    merged_clip = clips_array([[clip1_resized_sped], [clip2_resized_sped]])
 
 
     # --- ADDED: Create divider line ---
@@ -92,12 +92,12 @@ def merge_videos(video1_path, video2_path, t1_start, t1_end, t2_start, t2_end,
     )
     
     # Position line between the two clips
-    line_position = (0, clip1_resized.h - line_width//2)  # Below first clip
+    line_position = (0, clip1_resized_sped.h - line_width//2)  # Below first clip
     final_clip = CompositeVideoClip([merged_clip, line.with_position(line_position)])
 
     # Combine audio
-    audio1 = clip1_resized.audio
-    audio2 = clip2_resized.audio
+    audio1 = clip1_resized_sped.audio
+    audio2 = clip2_resized_sped.audio
     combined_audio = CompositeAudioClip([audio1, audio2])
     final_clip.audio = combined_audio
 
@@ -117,6 +117,7 @@ def parse_arguments():
     parser.add_argument("--output_path", type=str, default="merged_output.mp4", help="Output file path.")
     parser.add_argument("--line_color", type=int, nargs=3, default=(255, 0, 0), help="RGB color of the divider line.")
     parser.add_argument("--line_width", type=int, default=3, help="Width of the divider line in pixels.")
+    parser.add_argument("--speed_factor", type=float, default=1, help="Speed factor for the video clips.")
     parser.add_argument("--target_resolution", type=int, nargs=2, default=(1080, 1920), help="Target resolution for the output video.")
     
     return parser.parse_args()
@@ -134,5 +135,6 @@ if __name__ == "__main__":
         output_path=args.output_path,
         line_color=args.line_color,
         line_width=args.line_width,
+        speed_factor=args.speed_factor,
         target_resolution=args.target_resolution
     )
