@@ -1,3 +1,31 @@
+def seconds_to_srt_time(time_seconds):
+    """
+    Convert seconds (float) to SRT time format: HH:MM:SS,mmm
+    """
+    total_milliseconds = int(round(time_seconds * 1000))
+    milliseconds = total_milliseconds % 1000
+    total_seconds = total_milliseconds // 1000
+    seconds = total_seconds % 60
+    total_minutes = total_seconds // 60
+    minutes = total_minutes % 60
+    hours = total_minutes // 60
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d},{milliseconds:03d}"
+
+def write_srt_file(subtitles, output_file_path):
+    """
+    Convert a list of subtitles to .srt format and save to a file.
+    """
+    with open(output_file_path, 'w', encoding='utf-8') as file:
+        for index, (start, end, text) in enumerate(subtitles, start=1):
+            # Convert start and end times to SRT format
+            start_srt = seconds_to_srt_time(start)
+            end_srt = seconds_to_srt_time(end)
+            
+            # Write the subtitle entry
+            file.write(f"{index}\n")
+            file.write(f"{start_srt} --> {end_srt}\n")
+            file.write(f"{text}\n\n")
+
 def parse_subtitles(file_path = "test.txt"):
     """
     Read subtitles from a file in the specified format and return a list of lists:
@@ -66,4 +94,6 @@ merged_segments = merge_segments(subtitle_segments)
 print(merged_segments)
 subtitles_file = "subtitles.txt"
 write_subtitles_to_file(merged_segments, subtitles_file)
+write_srt_file(merged_segments, "subtitles.srt")
 print(f"Subtitles saved to {subtitles_file}")
+print(f"SRT file saved to subtitles file")
