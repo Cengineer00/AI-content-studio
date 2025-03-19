@@ -4,3 +4,8 @@ https://huggingface.co/THUDM/CogVideoX-5b
 
 Open-Sora:
 https://github.com/hpcaitech/Open-Sora
+
+
+Wan2.1:
+https://github.com/Wan-Video/Wan2.1
+https://huggingface.co/blog/LLMhacker/wanai-wan21
