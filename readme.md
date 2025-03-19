@@ -40,15 +40,21 @@ A collection of open-source tools for creative content generation, including **t
 - [ ] Explore options -> **RMBG-2.0, nadermx/BackgroundRemover**
       
 ### **⌨️✨ TypeFlow**
-TypeFlow is a tool that allows you to pre-write text and display it dynamically in your videos at a controlled speed—just like natural typing, but without mistakes. Perfect for when you want text to appear smoothly on screen without the hassle of retyping.
 - [x] Implement
 - [x] Convert to a BaseModel structure and create a task of it
 
-### **⌨️✨ ShortsFusion**
-Automate the creation of YouTube Shorts by merging and trimming two videos into a horizontal split-screen format with combined audio.
+### **▶️🔴 ShortsFusion**
 - [x] Implement the first, simple version.
 - [ ] Convert to a BaseModel structure and create a task of it.
 - [ ] Add different options for the user.
+
+### Transcriber
+- [x] Implement the first, simple version.
+- [ ] Convert to a BaseModel structure and create a task of it.
+
+### SubtitleStyler
+- [x] Implement the first, simple version.
+- [ ] Convert to a BaseModel structure and create a task of it.
 
 ---
 
