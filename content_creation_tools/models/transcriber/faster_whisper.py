@@ -1,5 +1,4 @@
 from content_creation_tools.core import BaseModel
-from content_creation_tools.utils import write_srt_file
 
 from faster_whisper import WhisperModel
 from typing import Dict, Any, BinaryIO, Union, List, Tuple
@@ -7,7 +6,7 @@ from numpy import ndarray
 
 class FasterWhisper(BaseModel):
     def __init__(self):
-        super().__init__("FasterWhisper Transcriber")
+        super().__init__("FasterWhisper")
 
         self.model = None
         
@@ -41,16 +40,11 @@ class FasterWhisper(BaseModel):
                 'type': int,
                 'description': 'Maximum number of characters per line in the subtitles.',
                 'default': 20
-            },
-            'output_file': {
-                'type': str,
-                'description': 'Path to the output file.',
-                'default': 'examples/output.srt'
             }
         }
 
     def get_input(self) -> str:
-        audio = input("Path to the input file: ")
+        audio = input("Path to the input file (e.g. examples/shorts_test.mp3): ")
         return audio
     
     def generate(self, params: Dict[str, Any], audio: Union[str, BinaryIO, ndarray]) -> List[Tuple[float, float, str]]:
@@ -76,8 +70,6 @@ class FasterWhisper(BaseModel):
                 segments.append((word.start, word.end, word.word))
     
         merged_segments = self._merge_segments(segments, max_chars_per_line=params['max_chars_per_line'])
-
-        write_srt_file(merged_segments, params['output_file'])
 
         return merged_segments
 
