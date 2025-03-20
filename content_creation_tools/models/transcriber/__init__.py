@@ -1,0 +1,1 @@
+from .faster_whisper import FasterWhisper
