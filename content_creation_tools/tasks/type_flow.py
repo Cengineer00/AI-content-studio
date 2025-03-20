@@ -14,3 +14,6 @@ class TypeFlowTask(BaseTask):
 
     def execute(self, model: TypeFlow, params, input_data):
         return model.generate(params=params, text=input_data)
+    
+    def apply_result(self, result, timestamp):
+        pass

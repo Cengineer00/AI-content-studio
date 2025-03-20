@@ -14,3 +14,6 @@ class StableScrollTask(BaseTask):
 
     def execute(self, model: StableScroll, params, input_data):
         return model.generate(params=params)
+    
+    def apply_result(self, result, timestamp):
+        pass
