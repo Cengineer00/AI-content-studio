@@ -1,4 +1,5 @@
-from content_creation_tools.utils.type_flow import (
+from content_creation_tools.core import BaseTask
+from content_creation_tools.models.type_flow import (
     TypeFlow
 )
 

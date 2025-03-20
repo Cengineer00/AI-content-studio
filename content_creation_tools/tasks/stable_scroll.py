@@ -1,4 +1,5 @@
-from content_creation_tools.utils.stable_scroll import (
+from content_creation_tools.core import BaseTask
+from content_creation_tools.models.stable_scroll import (
     StableScroll
 )
 
