@@ -1,6 +1,5 @@
 from content_creation_tools.core import BaseModel
 
-import argparse
 import time
 import pyautogui
 from pynput import keyboard
