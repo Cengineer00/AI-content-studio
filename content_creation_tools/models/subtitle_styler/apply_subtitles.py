@@ -26,10 +26,10 @@ def add_subtitles_to_video(
     color="white",
     bg_color=(0, 0, 0),
     bg_opacity=0.6,
-    stroke_color="black",
+    stroke_color="red",
     stroke_width=1,
     position=("center", "bottom"),
-    padding=(20, 10),
+    padding=(10, 5),
 ):
     """
     Add styled subtitles to a video with customizable font, background, and more.
@@ -39,7 +39,7 @@ def add_subtitles_to_video(
         subtitles (list): List of [[start_time, end_time, subtitle_text], ...].
         output_video_path (str): Path to save the output video.
         font (str): Font name (e.g., "Arial-Bold").
-        fontsize (int): Font size.
+        font_size (int): Font size.
         color (str): Text color (hex or name).
         bg_color (float): Background color (RGB).
         bg_opacity (float): Background opacity (0.0 to 1.0).
@@ -100,4 +100,4 @@ def add_subtitles_to_video(
 if __name__ == "__main__":
     subtitles_file = "subtitles.txt"
     subtitles = read_subtitles_from_file(subtitles_file)
-    add_subtitles_to_video("shorts_deneme.mp4", subtitles, "shorts_deneme_subtitle.mp4", position=("center", "bottom"))
+    add_subtitles_to_video("examples/shorts_deneme2.mp4", subtitles, "examples/shorts_deneme_subtitle.mp4", position=("center", "top"))
