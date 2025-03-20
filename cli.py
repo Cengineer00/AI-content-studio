@@ -6,7 +6,8 @@ from content_creation_tools.tasks import (
     TextToVideoTask,
     ImageToVideoTask,
     TypeFlowTask,
-    StableScrollTask
+    StableScrollTask,
+    TranscriberTask,
     # ImageUpscalingTask,
     # StableScrollTool,
     # StyleTransferTool
@@ -21,6 +22,7 @@ class ContentCreationCLI:
             '3': {'name': 'Image-to-Video', 'handler': ImageToVideoTask()},
             '4': {'name': 'TypeFlow', 'handler': TypeFlowTask()},
             '5': {'name': 'StableScroller', 'handler': StableScrollTask()},
+            '6': {'name': 'Transcriber', 'handler': TranscriberTask()},
             # '4': {'name': 'Image-Upscaling', 'handler': ImageUpscalingTask()},
             # '5': {'name': 'Stable-Scrolling', 'handler': StableScrollTool()},
             # '6': {'name': 'Style-Transfer', 'handler': StyleTransferTool()}
