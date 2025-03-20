@@ -17,6 +17,6 @@ class TextToVideoTask(BaseTask):
     def execute(self, model, params, input_data):
         return model.generate(params=params, prompt=input_data)
     
-    def apply_result(self, result, timestamp):
+    def handle_result(self, result, timestamp):
         filename = f"output/{self.name}_{timestamp}.mp4"
         print(f"\n✓ Would be saved to:\n{filename}")

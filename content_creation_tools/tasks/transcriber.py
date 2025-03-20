@@ -18,7 +18,7 @@ class TranscriberTask(BaseTask):
     def execute(self, model, params, input_data):
         return model.generate(params=params, audio=input_data)
     
-    def apply_result(self, result, timestamp):
+    def handle_result(self, result, timestamp):
         """
         Processes subtitle results by either saving as an SRT file, applying to video, or quitting.
         

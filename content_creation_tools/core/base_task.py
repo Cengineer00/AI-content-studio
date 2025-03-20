@@ -14,6 +14,6 @@ class BaseTask(ABC):
         pass
 
     @abstractmethod
-    def apply_result(self, result, timestamp):
+    def handle_result(self, result, timestamp):
         """Abstract method to be implemented by subclasses"""
         pass
