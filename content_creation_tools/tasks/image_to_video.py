@@ -1,18 +1,18 @@
+from content_creation_tools.core import BaseTask
 from content_creation_tools.models.image_to_video import (
     DummyImageToVideoModel
 )
 
-class ImageToVideoTask:
+class ImageToVideoTask(BaseTask):
     def __init__(self):
-        self.models = {
-            'DummyImageToVideoModel': DummyImageToVideoModel(),
-        }
+        super().__init__("Image-to-Video")
+
+        self.models = [
+            DummyImageToVideoModel(),
+        ]
 
     def list_models(self):
-        return list(self.models.keys())
-
-    def get_model(self, model_name):
-        return self.models.get(model_name)
+        return self.models
 
     def execute(self, model, params, input_data):
         return model.generate(params=params, image_path=input_data)

@@ -3,8 +3,10 @@ from content_creation_tools.models.type_flow import (
     TypeFlow
 )
 
-class TypeFlowTask:
+class TypeFlowTask(BaseTask):
     def __init__(self):
+        super().__init__("TypeFlow")
+
         self.model = TypeFlow()
 
     def get_model(self):

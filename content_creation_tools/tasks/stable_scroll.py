@@ -3,8 +3,10 @@ from content_creation_tools.models.stable_scroll import (
     StableScroll
 )
 
-class StableScrollTask:
+class StableScrollTask(BaseTask):
     def __init__(self):
+        super().__init__("StableScroller")
+
         self.model = StableScroll()
 
     def get_model(self):
