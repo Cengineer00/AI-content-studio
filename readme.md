@@ -50,7 +50,8 @@ A collection of open-source tools for creative content generation, including **t
 
 ### Transcriber
 - [x] Implement the first, simple version.
-- [ ] Convert to a BaseModel structure and create a task of it.
+- [x] Convert to a BaseModel structure and create a task of it.
+- [x] Add result handler
 
 ### SubtitleStyler
 - [x] Implement the first, simple version.
