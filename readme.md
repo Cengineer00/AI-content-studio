@@ -1,4 +1,4 @@
-# Content Creation Tools
+# AI Content Studio
 
 A collection of open-source tools for creative content generation, including **text-to-image, text-to-video, image-to-video, image upscaling,** and **stable scrolling**.
 
