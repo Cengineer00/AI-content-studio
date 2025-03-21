@@ -48,14 +48,17 @@ A collection of open-source tools for creative content generation, including **t
 - [ ] Convert to a BaseModel structure and create a task of it.
 - [ ] Add different options for the user.
 
-### Transcriber
+### **Transcriber**
 - [x] Implement the first, simple version.
 - [x] Convert to a BaseModel structure and create a task of it.
 - [x] Add result handler
 
-### SubtitleStyler
+### **SubtitleStyler**
 - [x] Implement the first, simple version.
 - [ ] Convert to a BaseModel structure and create a task of it.
+
+### **Music Generator**
+- [ ] Explore options -> **facebook/musicgen-small, facebook/musicgen-melody**
 
 ---
 
