@@ -8,9 +8,7 @@ from content_creation_tools.tasks import (
     TypeFlowTask,
     StableScrollTask,
     TranscriberTask,
-    # ImageUpscalingTask,
-    # StableScrollTool,
-    # StyleTransferTool
+    SubStylerTask,
 )
 
 class ContentCreationCLI:
@@ -23,6 +21,7 @@ class ContentCreationCLI:
             TypeFlowTask(),
             StableScrollTask(),
             TranscriberTask(),
+            SubStylerTask(),
         ]
 
     def show_menu(self, title, options):
