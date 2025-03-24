@@ -6,31 +6,25 @@ from content_creation_tools.tasks import (
     TextToVideoTask,
     ImageToVideoTask,
     TypeFlowTask,
-    StableScrollTask
-    # ImageUpscalingTask,
-    # StableScrollTool,
-    # StyleTransferTool
+    StableScrollTask,
+    TranscriberTask,
+    SubStylerTask,
 )
 
 class ContentCreationCLI:
     def __init__(self):
         # TODO: Define name in task classes
-        self.task_registry = {
-            '1': {'name': 'Text-to-Image', 'handler': TextToImageTask()},
-            '2': {'name': 'Text-to-Video', 'handler': TextToVideoTask()},
-            '3': {'name': 'Image-to-Video', 'handler': ImageToVideoTask()},
-            '4': {'name': 'TypeFlow', 'handler': TypeFlowTask()},
-            '5': {'name': 'StableScroller', 'handler': StableScrollTask()},
-            # '4': {'name': 'Image-Upscaling', 'handler': ImageUpscalingTask()},
-            # '5': {'name': 'Stable-Scrolling', 'handler': StableScrollTool()},
-            # '6': {'name': 'Style-Transfer', 'handler': StyleTransferTool()}
-        }
-
-    def clear_screen(self):
-        print("\033[H\033[J", end="")  # ANSI escape codes for clearing screen
+        self.tasks = [
+            TextToImageTask(),
+            TextToVideoTask(),
+            ImageToVideoTask(),
+            TypeFlowTask(),
+            StableScrollTask(),
+            TranscriberTask(),
+            SubStylerTask(),
+        ]
 
     def show_menu(self, title, options):
-        self.clear_screen()
         print(f"╒{'═' * (len(title)+2)}╕")
         print(f"│ {title.upper()} │")
         print(f"╘{'═' * (len(title)+2)}╛")
@@ -75,8 +69,7 @@ class ContentCreationCLI:
             except ValueError as e:
                 print(f"! Validation Error:\n{e}")
 
-    def handle_generation_flow(self, task):
-        handler = task['handler']
+    def handle_generation_flow(self, handler):
         current_model = None
 
         while True:
@@ -86,15 +79,16 @@ class ContentCreationCLI:
                     # Model selection for tasks requiring models
                     models = handler.list_models()
                     model_choice = self.show_menu(
-                        f"Choose Model for {task['name']}",
+                        f"Choose Model for {handler}",
                         {str(i+1): name for i, name in enumerate(models)}
                     )
                     
                     if model_choice == 'q':
                         return
                     
-                    current_model = handler.get_model(models[int(model_choice)-1])
-                    if not current_model:
+                    try:
+                        current_model = models[int(model_choice)-1]
+                    except:
                         print("! Invalid model selection")
                         continue
                 else:
@@ -118,10 +112,8 @@ class ContentCreationCLI:
                 print("╰─ Done!")
                 
                 # TODO: Result handling
-                # timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-                # output_path = f"output/{task['name']}_{timestamp}.{result['format']}"
-                # result['output'].save(output_path)
-                print(f"\n✓ Output saved to: {result}")
+                timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+                handler.handle_result(result, timestamp)
 
                 # Continuation prompt
                 cont = input("\nCreate another? (y/n): ").lower()
@@ -141,14 +133,15 @@ class ContentCreationCLI:
             while True:
                 task_choice = self.show_menu(
                     "AI Content Studio",
-                    {k: v['name'] for k, v in self.task_registry.items()}
+                    {str(i+1): name for i, name in enumerate(self.tasks)}
                 )
 
                 if task_choice == 'q':
                     break
 
-                task = self.task_registry.get(task_choice)
-                if not task:
+                try:
+                    task = self.tasks[int(task_choice)-1]
+                except:
                     print("! Invalid selection")
                     continue
 

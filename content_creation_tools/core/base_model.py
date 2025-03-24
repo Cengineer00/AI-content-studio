@@ -7,6 +7,9 @@ class BaseModel(ABC):
         self.parameter_schema: Dict[str, Dict[str, Any]] = {}
         self.required_params: list = []
 
+    def __str__(self):
+        return self.name
+
     def get_parameter_help(self) -> str:
         """Generate help text for model parameters"""
         help_text = f"\n{self.name} Parameters:\n"
