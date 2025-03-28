@@ -49,11 +49,11 @@ class FasterWhisper(BaseModel):
     
     def generate(self, params: Dict[str, Any], audio: Union[str, BinaryIO, ndarray]) -> List[Tuple[float, float, str]]:
         if self.model is None:
-            print("\t╭─ Initializing the model...")
-            print(f"\tParameters: {params}")
+            print("╭─ Initializing the model...")
+            print(f"Parameters: {params}")
             self.model = WhisperModel(params['model_size_or_path'], device=params['device'])
 
-        print("\t╭─ Transcribing the audio...")
+        print("╭─ Transcribing the audio...")
         transcribe_result, info = self.model.transcribe(
             audio=audio,
             word_timestamps=True,
