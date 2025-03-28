@@ -1,3 +1,5 @@
+from moviepy import VideoFileClip
+
 from typing import List, Tuple
 import os
 
@@ -78,3 +80,45 @@ def read_srt_file(file_path):
             subtitles.append([start, end, text])
     
     return subtitles
+
+def extract_audio(video_path, output_audio_path=None, codec='mp3', bitrate='192k'):
+    """
+    Extract audio from video file using MoviePy
+    
+    Args:
+        video_path (str): Path to input video file
+        output_audio_path (str): Optional output path (default: same as video with audio extension)
+        codec (str): Audio codec ('mp3', 'wav', 'ogg', etc.)
+        bitrate (str): Audio quality bitrate (e.g., '192k')
+    
+    Returns:
+        str: Path to extracted audio file
+    """
+    if not output_audio_path:
+        base = os.path.splitext(video_path)[0]
+        output_audio_path = f"{base}_audio.{codec}"
+    
+    try:
+        # Load video file
+        video = VideoFileClip(video_path)
+        
+        # Extract audio
+        audio = video.audio
+        
+        # Write audio file
+        audio.write_audiofile(
+            output_audio_path,
+            codec=codec,
+            bitrate=bitrate,
+        )
+        
+        # Close files
+        audio.close()
+        video.close()
+        
+        print(f"Successfully extracted audio to: {output_audio_path}")
+        return output_audio_path
+        
+    except Exception as e:
+        print(f"Error extracting audio: {str(e)}")
+        return None
