@@ -89,7 +89,7 @@ class SubtitleStyler(BaseModel):
             "video_path": video_path
         }
     
-    def generate(self, params: Dict[str, Any], video_path: str, subtitle_path: str, subtitles: list = None) -> str:
+    def generate(self, params: Dict[str, Any], video_path: str, subtitle_path: str = None, subtitles: list = None) -> CompositeVideoClip:
         """
             Generate a video with subtitles
             take either subtitle_path or subtitles as input
