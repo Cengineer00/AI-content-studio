@@ -58,7 +58,7 @@ A collection of open-source tools for creative content generation, including **t
 - [x] Convert to a BaseModel structure and create a task of it.
 
 ### **Music Generator**
-- [ ] Explore options -> **facebook/musicgen-small, facebook/musicgen-melody**
+- [ ] Explore options -> **facebook/musicgen-small, facebook/musicgen-melody, [ACE-Step](https://github.com/ace-step/ACE-Step)**
 
 ---
 
