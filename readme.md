@@ -12,6 +12,7 @@ A collection of open-source tools for creative content generation, including **t
 - **ShortsFusion**: Automate the creation of YouTube Shorts by merging and trimming two videos into a vertical split-screen.
 - **Transcriber**: Automatically transcribes videos and generates subtitles with perfect timing.
 - **SubtitleStyler**: Customize and apply subtitles to videos, adjusting style, timing, and placement for seamless integration.
+- **TimestampGenerator**: Automotically generate timestamp marks of a YouTube video.
 ---
 
 ## ✅ TODO List
@@ -59,6 +60,9 @@ A collection of open-source tools for creative content generation, including **t
 
 ### **Music Generator**
 - [ ] Explore options -> **facebook/musicgen-small, facebook/musicgen-melody, [ACE-Step](https://github.com/ace-step/ACE-Step)**
+
+### **Timestamp Generator**
+- [ ] Explore options.
 
 ---
 
